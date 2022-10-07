@@ -17,11 +17,16 @@ class Berita_m extends CI_Model
     {
 
         $userid = $this->fungsi->user_login()->user_id;
+        // var_dump($userid);
+        // exit;
         $admin = $this->fungsi->user_login()->level;
         if ($admin == 1) {
             $this->db->from('t_berita');
+            // $this->db->where('berita_id', $id);
+            if ($id != null) {
+                $this->db->where('berita_id', $id);
+            }
         } else {
-
             $this->db->from('t_berita');
             $this->db->where('user_id', $userid);
             if ($id != null) {
@@ -107,13 +112,14 @@ class Berita_m extends CI_Model
 
     public function confirm($post, $dt)
     {
-        // var_dump($dt);
-        // exit;
         $post->status = $dt;
         $data = array(
             'status' => $post->status,
         );
+        // var_dump($post);
+        // exit;
         $this->db->where('berita_id', $post->berita_id);
+        // $this->db->where('user_id', $post->user_id);
         $this->db->update('t_berita', $data);
     }
 }

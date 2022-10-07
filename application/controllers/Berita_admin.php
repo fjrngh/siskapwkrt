@@ -287,6 +287,8 @@ class Berita_admin extends CI_Controller
     public function confirm($id, $dt)
     {
         $post = $this->berita_m->get($id)->row();
+        // var_dump($post);
+        // exit;
         $this->berita_m->confirm($post, $dt);
         if ($this->db->affected_rows() > 0) {
             $this->session->set_flashdata('success', 'Status Berhasil Diubah');

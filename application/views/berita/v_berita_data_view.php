@@ -31,6 +31,19 @@
                     Jenis Media : <?= $data->jenis_media ?><br>
                     url link media: <?= $data->url ?><br>
                 </address>
+                <?php if (empty($data->status)) { ?>
+                    <h3 class="text-danger font-weight-bold">Media Belum Terverifikasi</h3>
+                    <p class="text-danger font-size-sm">Harap mengisi semua data media yang tersedia agar bisa diajukan pendaftaran media berita!</p>
+                    <a class="btn btn-danger " href="<?= site_url('berita/confirm_berita/' . $data->berita_id . '/3') ?>"><i class="fa fa-send"></i> Ajukan Media Berita</a><br>
+                <?php } elseif (($data->status) == 3) { ?>
+                    <h3 class="text-danger font-weight-bold">Media Sedang Diajukan</h3>
+                    <p class="text-danger font-size-sm">Harap menunggu konfirmasi data media berita!</p>
+                <?php } elseif (($data->status) == 2) { ?>
+                    <h3 class="text-danger font-weight-bold">Pengajuan Media Gagal</h3>
+                    <p class="text-danger font-size-sm">Harap mengisi semua data media berita!</p>
+                    <a class="btn btn-danger " href="<?= site_url('berita/confirm_berita/' . $data->berita_id . '/3') ?>"><i class="fa fa-send"></i> Ajukan Media Berita</a><br>
+                <?php } else {
+                } ?>
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
@@ -38,7 +51,7 @@
             <!-- /.col -->
         </div>
         <!-- /.row -->
-
+        <br>
         <div class="row invoice-info">
             <div class="col-sm-3 invoice-col">
             </div>

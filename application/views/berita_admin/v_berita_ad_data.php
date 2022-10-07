@@ -41,17 +41,20 @@
                             <td><?= $data->jenis_media ?></td>
                             <td><?= $data->url ?></td>
                             <td><?= $data->nama_perusahaan ?></td>
-                            <td><?php if ($data->status == '1') {
+                            <td><?php if ($data->status == 1) {
                                     echo '<p class="text-success"><i class="fa fa-check-circle"> Approve</i></p>';
-                                } elseif ($data->status == '2') {
-                                    echo '<p class="text-danger"><i class="fa fa-ban"> Reject</i></p>';
                                 } else {
-                                    echo '<p class="text-warning"><i class="fa fa-share-square"> Waiting Confirm</i></p>';
-                                }
-                                ?>
+                                    if ($data->status == 2) {
+                                        echo '<p class="text-danger"><i class="fa fa-ban"> Reject</i></p>';
+                                    } elseif ($data->status == 3) {
+                                        echo '<p class="text-warning"><i class="fa fa-share-square"> Waiting Confirm</i></p>';
+                                    } else {
+                                        echo '<p class="text-info"><i class="fa fa-exclamation-triangle"> not submitted</i></p>';
+                                    }
+                                } ?>
                             </td>
                             <td class="text-center" width="280px">
-                                <?php if (empty($data->status)) { ?>
+                                <?php if (($data->status) != 1 && ($data->status) != 2) { ?>
                                     <a href="<?= site_url('berita_admin/confirm/' . $data->berita_id) ?>" id="btn-confirm" class="btn btn-primary btn-xs">
                                         <i class="fa fa-exclamation-circle"> Konfirmasi</i>
                                     </a>

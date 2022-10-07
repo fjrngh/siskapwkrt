@@ -50,7 +50,7 @@
                                     }
                                 } ?></td>
                             <td class="text-center" width="250px">
-                                <?php if ($data->status_user != 1) { ?>
+                                <?php if ($data->status_user != 1 && $data->status_user != 2) { ?>
                                     <a href="<?= site_url('user/confirm/' . $data->user_id) ?>" id="btn-confirm" class="btn btn-primary btn-xs">
                                         <i class="fa fa-exclamation-circle "> Konfirmasi</i>
                                     </a>

@@ -294,6 +294,18 @@ class Berita extends CI_Controller
         redirect('berita');
     }
 
+    public function confirm_berita($id, $dt)
+    {
+        $post = $this->berita_m->get($id)->row();
+        $this->berita_m->confirm($post, $dt);
+        // var_dump($post);
+        // exit;
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('success', 'Data Berhasil Diapprove');
+        }
+        redirect('berita');
+    }
+
     public function username_check()
     {
         $post = $this->input->post(null, TRUE);

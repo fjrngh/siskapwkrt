@@ -146,7 +146,7 @@
                     <li <?= $this->uri->segment(1) == 'profil_user' ? 'class="active"' : '' ?>>
                         <a href="<?= site_url('profil_user') ?>"><i class="fa fa-user"></i> <span>Profil</span></a>
                     </li>
-                    <?php if ($this->fungsi->user_login()->status_user == 2) { ?>
+                    <?php if ($this->fungsi->user_login()->status_user == 1 && $this->fungsi->user_login()->level == 2) { ?>
                         <li class="treeview <?= $this->uri->segment(1) == 'berita' ? 'active' : '' ?>">
                             <a href="#">
                                 <i class="fa fa-newspaper-o"></i> <span>Media Berita</span>

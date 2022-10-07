@@ -45,6 +45,10 @@
                         <?php } elseif (($this->fungsi->user_login()->status_user) == 3) { ?>
                             <h3 class="text-danger font-weight-bold">Akun Sedang Diajukan</h3>
                             <p class="text-danger font-size-sm">Harap menunggu konfirmasi data pribadi anda!</p>
+                        <?php } elseif (($this->fungsi->user_login()->status_user) == 2) { ?>
+                            <h3 class="text-danger font-weight-bold">Pengajuan Akun Gagal</h3>
+                            <p class="text-danger font-size-sm">Harap mengisi semua data pribadi anda!</p>
+                            <a class="btn btn-danger " href="<?= site_url('profil_user/confirm_user/' . $this->fungsi->user_login()->user_id) ?>">Ajukan Data Diri</a><br>
                         <?php } else {
                         } ?>
 

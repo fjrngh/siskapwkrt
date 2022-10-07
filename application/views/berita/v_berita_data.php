@@ -42,11 +42,11 @@
                             <td><?= $data->url ?></td>
                             <td><?= $data->nama_perusahaan ?></td>
                             <td><?php if ($data->status == '1') {
-                                    echo 'approve';
+                                    echo '<p class="text-success"><i class="fa fa-check-circle"> Approve</i></p>';
                                 } elseif ($data->status == '2') {
-                                    echo 'reject';
+                                    echo '<p class="text-danger"><i class="fa fa-ban"> Reject</i></p>';
                                 } else {
-                                    echo 'waiting';
+                                    echo '<p class="text-warning"><i class="fa fa-share-square"> Waiting Confirm</i></p>';
                                 }
                                 ?>
                             </td>
