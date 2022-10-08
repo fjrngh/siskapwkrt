@@ -280,7 +280,7 @@
                         var html = '';
                         var i;
                         for (i = 0; i < data.length; i++) {
-                            html += '<option>' + data[i].name + '</option>';
+                            html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
                         }
                         $('.kabkota').html(html);
 
