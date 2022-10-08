@@ -10,6 +10,13 @@ class Registrasi extends CI_Controller
         $this->load->model(['user_m', 'daerah_m']);
         $this->load->library('form_validation');
     }
+    function get_subkabkota()
+    {
+        $id = $this->input->post('id');
+        $data = $this->daerah_m->get_kabkotanext($id);
+        // var_dump($id);
+        echo json_encode($data);
+    }
 
     public function add()
     {

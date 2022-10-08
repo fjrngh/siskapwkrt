@@ -141,10 +141,11 @@
                     </div>
                     <div class="input-group-input100">
                         <div class="wrap-input100">
+                            <!-- <div class="form-group"> -->
                             <span class="label-input100">Provinsi</span>
                             </br>&nbsp;
                             <div class="rs-select2 js-select-simple input100">
-                                <select name="provinsi">
+                                <select name="provinsi" id="provinsi">
                                     <option value=""> -- Pilih Provinsi -- </option>
                                     <?php foreach ($prov->result() as $key => $data) { ?>
                                         <option value="<?= $data->id ?>"><?= $data->name ?></option>
@@ -153,22 +154,22 @@
                                 <div class="select-dropdown"></div>
                                 <span class="focus-input100" data-symbol="&#xf201;"></span>
                             </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                     <div class="input-group-input100 mx-auto">
                         <div class="wrap-input100">
+                            <!-- <div class="form-group"> -->
                             <span class="label-input100">Kabupaten / Kota</span>
                             </br>&nbsp;
                             <div class="rs-select2 js-select-simple input100">
-                                <select name="kabkota">
+                                <select name="kabkota" id="kabkota" class="kabkota form-control">
                                     <option value=""> -- Pilih Kabupaten / Kota -- </option>
-                                    <?php foreach ($kabkota->result() as $key => $data) { ?>
-                                        <option value="<?= $data->id ?>"><?= $data->name ?></option>
-                                    <?php } ?>
                                 </select>
                                 <div class="select-dropdown"></div>
                                 <span class="focus-input100" data-symbol="&#xf201;"></span>
                             </div>
+                            <!-- </div> -->
                         </div>
                     </div>
 
@@ -262,6 +263,32 @@
     <script src="<?= base_url() ?>assets/login_components/vendor/countdowntime/countdowntime.js"></script>
     <script src="<?= base_url() ?>assets/login_components/js/main.js"></script>
     <script src="<?= base_url() ?>assets/login_components/js/global.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#provinsi').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?php echo base_url(); ?>registrasi/get_subkabkota",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option>' + data[i].name + '</option>';
+                        }
+                        $('.kabkota').html(html);
+
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 
